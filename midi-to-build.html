@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Convert MIDI files to wired Build A Boat For Treasure .Build files in your browser.">
+<title>BABFTMidi</title>
+<style>
+:root{color-scheme:light;--paper:#353534;--ink:#dee8e4;--muted:#eae0e0;--line:#c7cbc1;--accent:#209fb9;--light:#2b2b29;--mono:Consolas,'Courier New',monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 Arial,Helvetica,sans-serif}button,input,select{font:inherit;color:inherit;border-radius:0}button{cursor:pointer;border:1px solid var(--ink);background:var(--light);padding:9px 14px;min-height:39px}button:hover:enabled{background:#e5e6dc}button:disabled{cursor:default;opacity:.4}button.primary{background:var(--ink);color:white;border-color:var(--ink)}button.primary:hover:enabled{background:#414b44}button.text{border:0;background:none;padding:0;text-decoration:underline;min-height:30px;font-size:13px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}a{color:inherit}input[type=number],input[type=text],select{background:var(--light);border:1px solid #91978d;padding:7px 9px;width:100%;height:37px}input[type=checkbox]{accent-color:var(--ink);width:16px;height:16px;flex-shrink:0;margin:2px 0}input[type=range]{accent-color:var(--accent);width:100%}.shell{max-width:1280px;margin:0 auto;padding:0 34px}header{display:flex;justify-content:space-between;align-items:center;padding:23px 0;border-bottom:2px solid var(--ink)}.brand{font:bold 18px var(--mono);letter-spacing:-1px}.brand b{color:var(--accent)}.stamp,.eyebrow,.section-title{font:12px var(--mono);letter-spacing:1px;text-transform:uppercase}.stamp{color:var(--muted)}.intro{display:flex;justify-content:space-between;align-items:end;gap:20px;padding:31px 0 26px}h1{font-size:38px;font-weight:500;letter-spacing:-1.5px;line-height:1.1;margin:6px 0 0}h2{font-size:19px;line-height:1.3;margin:0;font-weight:500}.eyebrow{color:var(--accent)}.intro p{margin:0;color:var(--muted);font-size:13px}.workspace{border:1px solid var(--ink);display:grid;grid-template-columns:306px minmax(0,1fr);background:var(--light)}aside{border-right:1px solid var(--ink)}.section{padding:21px 22px;border-bottom:1px solid var(--line)}.section:last-child{border-bottom:0}.section-title{display:block;margin-bottom:15px;color:var(--muted)}.drop{position:relative;display:block;border:1px dashed var(--accent);padding:23px 12px;text-align:center;cursor:pointer;background:var(--paper)}.drop:hover,.drop.drag{background:var(--light);border-color:var(--accent)}.drop:focus-within{outline:2px solid var(--accent)}.drop strong{font-weight:500;display:block;font-size:15px;color:var(--accent)}.drop small{display:block;color:var(--muted);margin-top:5px;font:12px var(--mono)}.drop input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.file-name{font:13px var(--mono);overflow-wrap:anywhere;margin:14px 0 3px}.file-meta{font-size:12px;color:var(--muted);margin:0}.file-actions{display:flex;gap:18px;justify-content:space-between;margin-top:9px}.field{display:block;margin-bottom:14px}.field>span{display:block;font-size:13px;margin-bottom:5px}.field:last-child{margin-bottom:0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.check{display:flex;align-items:start;gap:9px;margin:13px 0;font-size:13px}.check small{display:block;color:var(--muted);font-size:11px;margin-top:2px}details summary{cursor:pointer;font-size:13px}details .advanced{padding-top:14px}.tracks{max-height:195px;overflow:auto;margin:11px 0 0}.track{display:flex;gap:9px;padding:7px 0;border-top:1px solid #e4e5dc;font-size:12px}.track .track-label{flex:1;min-width:0;overflow-wrap:anywhere}.track em{font:11px var(--mono);color:var(--muted);font-style:normal;white-space:nowrap}.track-actions{display:flex;gap:14px}.main{min-width:0;display:flex;flex-direction:column}.readout{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}.stat{padding:21px 18px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat span{display:block;font:11px var(--mono);text-transform:uppercase;color:var(--muted);letter-spacing:.3px}.stat strong{display:block;font:29px var(--mono);margin-top:5px;font-weight:400}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:13px 18px}.tabs{display:flex;gap:20px}.tabs button{border:0;border-bottom:2px solid transparent;padding:8px 0;background:none;font:12px var(--mono)}.tabs button[aria-selected=true]{border-color:var(--accent);color:var(--accent)}.transport{display:flex;gap:8px;align-items:center}.transport button{padding:6px 12px;min-height:34px;font-size:12px}.empty{display:grid;place-content:center;text-align:center;min-height:340px;padding:30px;color:var(--muted)}.empty .symbol{font:65px var(--mono);color:#bec3b6;margin-bottom:15px}.empty strong{font-size:17px;color:var(--ink);font-weight:400}.empty p{font-size:13px;margin:7px 0}.view{padding:19px 18px 12px}.roll-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;font:11px var(--mono);color:var(--muted)}canvas{display:block;width:100%;height:286px;background:var(--light);border:1px solid var(--line)}.scrub{display:flex;gap:15px;align-items:center;margin-top:11px;font:12px var(--mono)}.scrub output{min-width:105px}.hint{font-size:11px;color:var(--muted);margin:9px 0 0}.notice{margin:0 18px 18px;border-left:3px solid var(--accent);padding:10px 12px;background:#f5eee2;color:#774725;font-size:12px}.wiring{overflow:auto;height:318px}table{border-collapse:collapse;width:100%;font:12px var(--mono);text-align:left;white-space:nowrap}td,th{border-bottom:1px solid var(--line);padding:10px}th{font-size:10px;font-weight:400;color:var(--muted);position:sticky;top:0;background:var(--light)}td:last-child{white-space:normal;min-width:120px}.pagination{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font:11px var(--mono)}.pagination button{font-size:11px;min-height:29px;padding:4px 10px}.export{margin-top:auto;border-top:1px solid var(--ink);padding:20px 22px}.export-fields{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}.export .field{margin:0}.export .primary{height:37px;min-height:37px;padding:7px 16px;font:13px var(--mono)}.export-meta{display:flex;justify-content:space-between;gap:10px;font:11px var(--mono);color:var(--muted);margin-top:12px}.status{min-height:25px;font:12px var(--mono);padding:15px 0 5px;color:var(--muted)}.status.error{color:var(--accent)}footer{display:flex;justify-content:space-between;gap:20px;padding:16px 0 25px;color:var(--muted);font-size:11px}footer details{max-width:550px}footer details p{margin:8px 0 0;font-size:12px}footer summary{font-size:11px}[hidden]{display:none!important}@media(max-width:900px){.shell{padding:0 18px}.workspace{grid-template-columns:260px minmax(0,1fr)}.stat{padding:17px 11px}.stat strong{font-size:24px}.toolbar{flex-wrap:wrap}.intro p{display:none}.section{padding:18px 16px}.export-fields{grid-template-columns:1fr}.export .primary{width:100%}}@media(max-width:650px){.shell{padding:0 12px}header{padding:18px 0}.stamp{font-size:10px;letter-spacing:0}h1{font-size:31px}.intro{padding:22px 0}.workspace{display:flex;flex-direction:column}aside{border-right:0;border-bottom:1px solid var(--ink)}.settings{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.settings .section-title,.settings details{grid-column:1/-1}.settings .check{margin:4px 0 12px}.readout .stat{padding:17px 9px}.stat strong{font-size:24px}.stat span{font-size:9px}.export-fields{grid-template-columns:1fr}.empty{min-height:230px}.toolbar{gap:8px}.tabs{gap:15px}footer{flex-direction:column;gap:10px}canvas{height:260px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="intro"><div><h1>BABFTMidi</h1></div></div>
+<main class="workspace">
+<aside>
+<section class="section"><span class="section-title">MIDI Source</span>
+<label class="drop" id="drop"><strong>Choose a MIDI file</strong><small>or drop .mid / .midi here</small><input type="file" id="midiFile" accept=".mid,.midi,audio/midi" aria-label="Choose MIDI file"></label>
+<p class="file-name" id="fileName">No file selected</p><p class="file-meta" id="fileMeta">25 MB max · processed locally</p>
+<div class="file-actions"><button class="text" id="demo">Load test tune</button><button class="text" id="clear" disabled>Clear</button></div>
+</section>
+<section class="section settings" id="settings"><span class="section-title">Note Timing</span>
+<div class="pair"><label class="field"><span>Start delay, sec</span><input id="startDelay" type="number" min="0" max="60" step="0.05" value="0.5"></label><label class="field"><span>Speed, %</span><input id="speed" type="number" min="10" max="400" step="1" value="100"></label></div>
+<label class="field"><span>Transpose, semitones</span><input id="transpose" type="number" min="-48" max="48" step="1" value="0"></label>
+<label class="check"><input id="merge" type="checkbox" checked><span>Merge nearby starts<small>Within 0.025 sec</small></span></label>
+<details><summary>Block saving &amp; layout</summary><div class="advanced">
+<label class="check"><input id="saveDelays" type="checkbox"><span>Save Delay blocks<small>Group starts within 0.075 sec</small></span></label>
+<label class="check"><input id="reuseNotes" type="checkbox"><span>Reuse matching note blocks<small>One block per pitch</small></span></label>
+<div class="pair"><label class="field"><span>Columns</span><input id="columns" type="number" value="24" min="4" max="32" step="1"></label><label class="field"><span>Spacing, studs</span><input id="spacing" type="number" value="3" min="3" max="10" step="0.5"></label></div>
+</div></details>
+</section>
+<section class="section"><span class="section-title">MIDI Tracks</span><div class="track-actions"><button class="text" id="allTracks" disabled>All</button><button class="text" id="noTracks" disabled>None</button></div><div id="tracks" class="tracks"><span class="file-meta">Load a MIDI to choose tracks.</span></div></section>
+</aside>
+<div class="main">
+<div class="readout"><div class="stat"><span>Music notes</span><strong id="statNotes">—</strong></div><div class="stat"><span>Delays</span><strong id="statDelays">—</strong></div><div class="stat"><span>Total blocks</span><strong id="statTotal">—</strong></div><div class="stat"><span>Play time</span><strong id="statTime">—</strong></div></div>
+<div class="toolbar"><div class="tabs" role="tablist" aria-label="Build view"><button id="rollTab" role="tab" aria-controls="rollView" aria-selected="true">Piano roll</button><button id="wiringTab" role="tab" aria-controls="wiringView" aria-selected="false">Wiring</button></div><div class="transport"><button id="play" disabled>▶ Preview</button><button id="stop" disabled aria-label="Stop preview">■ Stop</button></div></div>
+<div id="empty" class="empty"><div class="symbol" aria-hidden="true">♬</div><strong>Ready</strong><p>Choose a MIDI or load the test tune.</p></div>
+<div id="rollView" class="view" role="tabpanel" aria-labelledby="rollTab" hidden><div class="roll-heading"><span>F#3 — F#5 / 25 keys</span><span id="rollRange">0:00 — 0:12</span></div><canvas id="roll" aria-label="Converted note timeline"></canvas><div class="scrub"><output id="clock">0:00 / 0:00</output><input type="range" id="seek" min="0" max="1" step="0.01" value="0" aria-label="Preview position"></div><p class="hint">Synth preview · fixed 0.85 sec note sound · timing follows the exported build</p></div>
+<div id="wiringView" class="view" role="tabpanel" aria-labelledby="wiringTab" hidden><div class="wiring"><table><thead><tr><th>STEP</th><th>PLAY AT</th><th>WAIT, SEC</th><th>NOTES / KEY</th></tr></thead><tbody id="wiringRows"></tbody></table></div><div class="pagination"><button id="prev">← Previous</button><span id="pageInfo"></span><button id="next">Next →</button></div><p class="hint">Button → Delay chain → Note blocks. Each chord shares a Delay output.</p></div>
+<p id="notice" class="notice" hidden></p>
+<section class="export"><div class="export-fields"><label class="field"><span>Build filename</span><input type="text" id="outputName" value="song.Build" maxlength="120" aria-label="Build filename"></label><button id="download" class="primary" disabled>Download .Build ↓</button></div><div class="export-meta"><span id="exportMeta">1 Button + Delays + Music Notes</span><span>Import into your favorite script (I reccomend Butter)</span></div></section>
+</div>
+</main>
+<div id="status" class="status" role="status" aria-live="polite">Files stay in this browser.</div>
+<footer><span>Credits for conversion logic: <a href="https://babft-music-note.vercel.app/" target="_blank" rel="noopener">BABFT Music Notes</a></span></footer>
+</div>
+<script>/* Pitch folding and delay planning adapted from babft-music-note.vercel.app,
+   used with the author's permission supplied by the user. Build v1 serialization
+   is based on the user's wired Button -> Delay -> Note test file. */
+(function (root) {
+  'use strict';
+  const MIN = 54, MAX = 78, SUSTAIN = 0.85, LIMIT = 40000;
+  const round = n => Math.round(n * 100) / 100;
+  const noteName = n => ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'][n % 12] + (Math.floor(n / 12) - 1);
+  function fold(n) { while (n < MIN) n += 12; while (n > MAX) n -= 12; return n; }
+
+  function parseMidi(input) {
+    const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+    if (bytes.length > 25 * 1024 * 1024) throw Error('MIDI files must be 25 MB or smaller.');
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    let p = 0, bound = bytes.length, eventCount = 0, noteCount = 0;
+    function need(n) { if (p + n > bound) throw Error('Truncated or invalid MIDI file.'); }
+    function u8() { need(1); return bytes[p++]; }
+    function u16() { need(2); const n = view.getUint16(p); p += 2; return n; }
+    function u32() { need(4); const n = view.getUint32(p); p += 4; return n; }
+    function tag() { need(4); return String.fromCharCode(u8(),u8(),u8(),u8()); }
+    function vlq() {
+      let n = 0;
+      for (let i = 0; i < 4; i++) { const b = u8(); n = n * 128 + (b & 127); if (!(b & 128)) return n; }
+      throw Error('Invalid MIDI variable-length value.');
+    }
+    if (tag() !== 'MThd') throw Error('This is not a Standard MIDI file (.mid or .midi).');
+    const headerLength = u32(), headerStart = p;
+    if (headerLength < 6) throw Error('Invalid MIDI header.');
+    need(headerLength);
+    const format = u16(), trackCount = u16(), division = u16();
+    if (format === 2) throw Error('MIDI format 2 has independent sequences. Save it as format 0 or 1 first.');
+    if (format > 2 || !trackCount || trackCount > 512 || (format === 0 && trackCount !== 1)) throw Error('Unsupported MIDI header.');
+    if (!division || division === 0x8000) throw Error('Invalid MIDI time division.');
+    p = headerStart + headerLength;
+    const tracks = [], tempos = [{ tick: 0, tempo: 500000, order: -1 }];
+    let lastTick = 0;
+    for (let index = 0; index < trackCount; index++) {
+      bound = bytes.length;
+      // Unknown chunks are permitted by SMF; their declared bytes are skipped.
+      while (true) {
+        const type = tag(), size = u32(); need(size);
+        if (type === 'MTrk') { bound = p + size; break; }
+        p += size;
+      }
+      let tick = 0, running = null;
+      const track = { index, name: 'Track ' + (index + 1), notes: [], channels: new Set() }, active = new Map();
+      while (p < bound) {
+        if (++eventCount > 2000000) throw Error('MIDI contains too many events. Split it into smaller files.');
+        tick += vlq(); lastTick = Math.max(lastTick, tick);
+        let status = u8();
+        if (status < 128) { if (running === null) throw Error('Invalid MIDI running status.'); p--; status = running; }
+        else if (status < 240) running = status;
+        else running = null;
+        if (status === 255) {
+          const type = u8(), length = vlq(); need(length);
+          if (type === 81 && length === 3) {
+            const tempo = bytes[p] * 65536 + bytes[p+1] * 256 + bytes[p+2];
+            if (!tempo) throw Error('Invalid MIDI tempo.');
+            tempos.push({ tick, tempo, order: eventCount });
+          }
+          if (type === 3) track.name = new TextDecoder().decode(bytes.subarray(p,p+length)).replace(/[\x00-\x1f]/g,' ').trim() || track.name;
+          p += length;
+          if (type === 47) { p = bound; break; }
+        } else if (status === 240 || status === 247) { const length = vlq(); need(length); p += length; }
+        else if (status < 240) {
+          const kind = status >> 4, channel = status & 15, a = u8(), b = kind === 12 || kind === 13 ? 0 : u8();
+          if (a > 127 || b > 127) throw Error('Invalid MIDI channel event.');
+          const key = channel * 128 + a;
+          if (kind === 9 && b > 0) {
+            if (++noteCount > 120000) throw Error('MIDI contains over 120,000 notes. Split it before converting.');
+            const n = { midi: a, velocity: b / 127, tick, endTick: tick, channel, track: index };
+            track.notes.push(n); track.channels.add(channel);
+            if (!active.has(key)) active.set(key,[]);
+            active.get(key).push(n);
+          } else if (kind === 8 || (kind === 9 && b === 0)) {
+            const queue = active.get(key); if (queue && queue.length) queue.shift().endTick = tick;
+          }
+        } else throw Error('Unsupported MIDI system event.');
+      }
+      for (const queue of active.values()) for (const n of queue) n.endTick = Math.max(n.tick, tick);
+      track.channels = [...track.channels]; tracks.push(track);
+    }
+    let toSeconds;
+    if (division & 0x8000) {
+      const code = 256 - (division >> 8), ticksPerFrame = division & 255;
+      if (![24,25,29,30].includes(code) || !ticksPerFrame) throw Error('Invalid SMPTE time division.');
+      const fps = code === 29 ? 30000 / 1001 : code;
+      toSeconds = tick => tick / (fps * ticksPerFrame);
+    } else {
+      tempos.sort((a,b) => a.tick - b.tick || a.order - b.order);
+      let seconds = 0, previousTick = 0, tempo = 500000;
+      const map = [];
+      for (const t of tempos) {
+        seconds += (t.tick - previousTick) * tempo / division / 1000000;
+        map.push({ tick: t.tick, seconds, tempo: t.tempo }); previousTick = t.tick; tempo = t.tempo;
+      }
+      toSeconds = tick => {
+        let lo = 0, hi = map.length;
+        while (lo < hi) { const mid = (lo+hi) >> 1; if (map[mid].tick <= tick) lo = mid+1; else hi = mid; }
+        const t = map[Math.max(0,lo-1)];
+        return t.seconds + (tick - t.tick) * t.tempo / division / 1000000;
+      };
+    }
+    for (const t of tracks) for (const n of t.notes) { n.time = toSeconds(n.tick); n.duration = Math.max(0,toSeconds(n.endTick)-n.time); }
+    if (!noteCount) throw Error('This MIDI has no note events.');
+    return { format, tracks, duration: toSeconds(lastTick), noteCount };
+  }
+
+  function splitDelay(seconds) {
+    let left = Math.max(0.05,round(seconds));
+    if (left > 36000) throw Error('A single wait exceeds 10 hours. Trim the MIDI first.');
+    const parts = [];
+    while (left > 10) {
+      if (left - 10 < 0.05) { parts.push(round(left-0.05)); left = 0.05; break; }
+      parts.push(10); left = round(left-10);
+    }
+    if (left >= 0.05) parts.push(left);
+    return parts;
+  }
+  function makePlan(midi, settings = {}) {
+    const o = { speed:100, startDelay:0.5, transpose:0, merge:true, saveDelays:false, reuseNotes:false, ...settings };
+    if (!Number.isFinite(o.speed) || o.speed < 10 || o.speed > 400) throw Error('Speed must be between 10 and 400%.');
+    if (!Number.isFinite(o.startDelay) || o.startDelay < 0 || o.startDelay > 60) throw Error('Start delay must be between 0 and 60 seconds.');
+    if (!Number.isInteger(o.transpose) || o.transpose < -48 || o.transpose > 48) throw Error('Transpose must be a whole number from -48 to 48.');
+    const chosen = o.tracks ? new Set(o.tracks) : null;
+    let folded = 0, drums = 0;
+    const notes = [];
+    for (const track of midi.tracks) {
+      if (chosen && !chosen.has(track.index)) continue;
+      for (const n of track.notes) {
+        if (n.channel === 9) { drums++; continue; }
+        const original = n.midi + o.transpose, pitch = fold(original);
+        if (pitch !== original) folded++;
+        notes.push({ ...n, midi:pitch, originalMidi:original, time:n.time / (o.speed/100) });
+      }
+    }
+    notes.sort((a,b)=>a.time-b.time||a.midi-b.midi);
+    if (!notes.length) throw Error(drums ? 'Only drum notes are selected. Choose a track with pitched notes.' : 'Select at least one track with notes.');
+    const window = o.saveDelays ? 0.075 : o.merge ? 0.025 : 0.001;
+    const groups = [];
+    for (const n of notes) {
+      const last = groups[groups.length-1];
+      if (!last || n.time-last.sourceTime > window) groups.push({ sourceTime:n.time, notes:[n] });
+      else if (!last.notes.some(x=>x.midi===n.midi)) last.notes.push(n);
+    }
+    let previous = 0, time = 0, delayCount = 0, adjusted = 0, noteBlockCount = 0;
+    const bank = new Map();
+    const events = groups.map((g,i)=> {
+      const requested = i === 0 ? o.startDelay + g.sourceTime : g.sourceTime - previous;
+      const delays = splitDelay(requested); if (requested < 0.05) adjusted++;
+      time = round(time + delays.reduce((a,b)=>a+b,0)); previous = g.sourceTime;
+      delayCount += delays.length;
+      const eventNotes = g.notes.sort((a,b)=>a.midi-b.midi).map(n=> {
+        if (!o.reuseNotes || !bank.has(n.midi)) { noteBlockCount++; bank.set(n.midi,noteBlockCount); }
+        return { ...n, block:bank.get(n.midi), key:n.midi-MIN, name:noteName(n.midi) };
+      });
+      if (1 + delayCount + noteBlockCount > LIMIT) throw Error('Build exceeds 40,000 blocks. Select fewer tracks or enable block saving.');
+      return { index:i, sourceTime:g.sourceTime, time, requested, delays, notes:eventNotes };
+    });
+    return { events, settings:o, duration:time+SUSTAIN, delayCount, noteBlockCount, activations:events.reduce((s,e)=>s+e.notes.length,0), folded, drums, adjusted, drift:time-(groups.at(-1).sourceTime+o.startDelay), blockCount:1+delayCount+noteBlockCount };
+  }
+
+  function exportBuild(plan, layout = {}) {
+    const columns = Number(layout.columns ?? 24), spacing = Number(layout.spacing ?? 3);
+    if (!Number.isInteger(columns) || columns < 4 || columns > 32 || !Number.isFinite(spacing) || spacing < 3 || spacing > 10) throw Error('Layout needs 4–32 columns and spacing of 3–10 studs.');
+    const maxChord = Math.max(...plan.events.map(e=>e.notes.length));
+    const layerHeight = plan.settings.reuseNotes ? 6 : Math.max(6,maxChord*3+2);
+    function cell(index) { return { x:3+Math.floor(index/columns)%4*12, y:5.8+Math.floor(index/(columns*4))*layerHeight, z:-80+(index%columns)*spacing }; }
+    function block(id,type,x,y,z) {
+      const rotation = type==='Button' ? [0,0,1,-1,0,0,0,-1,0] : [1,0,0,0,1,0,0,0,1];
+      return { ID:id, CFrame:[round(x),Math.round(y*1000000)/1000000,round(z),...rotation], Size:type==='Button'?[0.8,2,2]:type==='Delay'?[1,1.4,1]:[1.8463504314422608,2.593684434890747,0.21868446469306947], Anchored:true, CanCollide:true, Transparency:0, CastShadow:true };
+    }
+    const data = { Button:[{...block(1,'Button',3,5.5,-84),MValues:{Density:2.6732,Legacy:false}}], Note:[], Delay:[] };
+    const noteBank = new Map(); let id = 2, previous = 1, slot = 0;
+    for (const event of plan.events) {
+      let c;
+      for (const duration of event.delays) {
+        c = cell(slot++);
+        const delay = { ...block(id++,'Delay',c.x,c.y,c.z), Binds:[[previous,'BindFire',-1]], MValues:{Density:0.6961,WaitDuration:duration} };
+        data.Delay.push(delay); previous = delay.ID;
+      }
+      event.notes.forEach((note,j)=> {
+        let target = noteBank.get(note.block);
+        if (!target) {
+          const position = plan.settings.reuseNotes ? {x:-6,y:6.396843,z:-80+(note.key)*3} : {x:c.x-3,y:c.y+0.596843+j*3,z:c.z};
+          target = { ...block(id++,'Note',position.x,position.y,position.z), Binds:[], MValues:{Key:note.key,Density:0.7} };
+          noteBank.set(note.block,target); data.Note.push(target);
+        }
+        target.Binds.push([previous,'BindFire',-1]);
+      });
+    }
+    const result = { Data:data, AutoBuild_Version:'v1' };
+    validateBuild(result);
+    return result;
+  }
+  function validateBuild(build) {
+    if (build.AutoBuild_Version !== 'v1' || !build.Data) throw Error('Expected a Build v1 file.');
+    const all = Object.entries(build.Data).flatMap(([type,a])=>a.map(b=>({type,...b}))), ids = new Map();
+    for (const b of all) {
+      if (!Number.isInteger(b.ID) || ids.has(b.ID)) throw Error('Duplicate or invalid block ID.');
+      if (b.CFrame?.length !== 12 || !b.CFrame.every(Number.isFinite)) throw Error('Invalid block position.');
+      ids.set(b.ID,b);
+      if (b.type === 'Delay' && !(b.MValues.WaitDuration >= 0.05 && b.MValues.WaitDuration <= 10)) throw Error('Delay outside 0.05–10 seconds.');
+      if (b.type === 'Note' && (!Number.isInteger(b.MValues.Key) || b.MValues.Key < 0 || b.MValues.Key > 24)) throw Error('Note key outside 0–24.');
+    }
+    for (const b of all) for (const [source,action,key] of b.Binds || []) {
+      if (!ids.has(source) || source === b.ID || !['Button','Delay'].includes(ids.get(source).type) || action !== 'BindFire' || key !== -1) throw Error('Invalid block binding.');
+    }
+    return { blocks:all.length, ids };
+  }
+  const api = { parseMidi,makePlan,exportBuild,validateBuild,splitDelay,fold,noteName,SUSTAIN };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  root.BoatMidi = api;
+})(typeof globalThis === 'undefined' ? window : globalThis);
+</script>
+<script>(function () {
+  'use strict';
+  const $ = id => document.getElementById(id), B = window.BoatMidi;
+  let midi = null, plan = null, build = null, fileLabel = '', page = 0, tab = 'roll', loadId = 0;
+  let audio = null, playing = false, timer = null, frame = null, startClock = 0, position = 0, nextEvent = 0;
+  const voices = new Set(), settingsIds = ['startDelay','speed','transpose','merge','saveDelays','reuseNotes','columns','spacing'];
+  const time = n => Math.floor(Math.max(0,n)/60)+':'+Math.floor(Math.max(0,n)%60).toString().padStart(2,'0');
+  const count = n => n.toLocaleString();
+  function status(message, error = false) { $('status').textContent = message; $('status').classList.toggle('error',error); $('status').setAttribute('role',error?'alert':'status'); }
+  function options() {
+    return { startDelay:Number($('startDelay').value), speed:Number($('speed').value), transpose:Number($('transpose').value), merge:$('merge').checked, saveDelays:$('saveDelays').checked, reuseNotes:$('reuseNotes').checked, tracks:[...$('tracks').querySelectorAll('input:checked')].map(x=>Number(x.value)) };
+  }
+  function refresh() {
+    stop(); plan = null; build = null;
+    $('download').disabled = $('play').disabled = true;
+    if (!midi) return;
+    try {
+      for (const id of settingsIds) { const el = $(id); if (el.type === 'number' && (el.value.trim()==='' || !el.checkValidity())) throw Error('Check the value for '+el.closest('label').innerText.trim()+'.'); }
+      plan = B.makePlan(midi,options());
+      build = B.exportBuild(plan,{ columns:Number($('columns').value),spacing:Number($('spacing').value) });
+      $('download').disabled = $('play').disabled = false;
+      $('statNotes').textContent = count(plan.noteBlockCount); $('statDelays').textContent = count(plan.delayCount);
+      $('statTotal').textContent = count(plan.blockCount); $('statTime').textContent = time(plan.duration);
+      $('exportMeta').textContent = count(plan.activations)+' note activations · '+(JSON.stringify(build).length/1024).toFixed(1)+' KB';
+      $('seek').max = plan.duration; $('seek').value = 0; position = 0; page = 0;
+      const messages = [];
+      if (plan.folded) messages.push(count(plan.folded)+' notes shifted by octaves.');
+      if (plan.drums) messages.push(count(plan.drums)+' drum notes skipped.');
+      if (plan.adjusted) messages.push(count(plan.adjusted)+' gaps raised to 0.05 sec.');
+      if (Math.abs(plan.drift) >= 0.01) messages.push('Final note timing differs by '+(plan.drift>=0?'+':'')+plan.drift.toFixed(2)+' sec.');
+      if (plan.settings.saveDelays) messages.push('Nearby starts grouped within 0.075 sec.');
+      $('notice').textContent = messages.join(' '); $('notice').hidden = !messages.length;
+      showTab(); wiring(); draw(); clock(); status('Ready to export · '+count(plan.blockCount)+' blocks.');
+    } catch (error) {
+      plan = null; build = null; $('notice').hidden = true;
+      for (const id of ['statNotes','statDelays','statTotal','statTime']) $(id).textContent = '—';
+      $('rollView').hidden = $('wiringView').hidden = true; $('empty').hidden = false;
+      $('empty').querySelector('strong').textContent = 'Check your selection.';
+      $('empty').querySelector('p').textContent = 'Adjust the settings to continue.';
+      $('exportMeta').textContent = 'No valid build'; status(error.message,true);
+    }
+  }
+  function showTab() {
+    $('empty').hidden = !!plan; $('rollView').hidden = !plan || tab !== 'roll'; $('wiringView').hidden = !plan || tab !== 'wiring';
+    $('rollTab').setAttribute('aria-selected',String(tab==='roll')); $('wiringTab').setAttribute('aria-selected',String(tab==='wiring'));
+    if (tab === 'roll' && plan) requestAnimationFrame(draw);
+  }
+  function trackList() {
+    const fragment = document.createDocumentFragment();
+    for (const track of midi.tracks.filter(t=>t.notes.length)) {
+      const pitched = track.notes.filter(n=>n.channel!==9).length;
+      const label = document.createElement('label'); label.className = 'track';
+      const input = document.createElement('input'); input.type = 'checkbox'; input.value = track.index; input.checked = pitched>0; input.disabled = pitched===0; input.addEventListener('change',refresh);
+      const name = document.createElement('span'); name.className = 'track-label'; name.textContent = track.name;
+      const amount = document.createElement('em'); amount.textContent = pitched ? count(pitched) : 'drums';
+      label.append(input,name,amount); fragment.append(label);
+    }
+    $('tracks').replaceChildren(fragment); $('allTracks').disabled = $('noTracks').disabled = false;
+  }
+  async function loadFile(file) {
+    if (!file) return;
+    const id = ++loadId; stop();
+    if (!/\.midi?$/i.test(file.name)) { status('Choose a .mid or .midi file.',true); return; }
+    $('download').disabled = $('play').disabled = true;
+    status('Reading '+file.name+'…');
+    try {
+      const buffer = await file.arrayBuffer(); if (id!==loadId) return;
+      const parsed = B.parseMidi(buffer); if (id!==loadId) return;
+      midi = parsed; fileLabel = file.name;
+      $('fileName').textContent = file.name;
+      $('fileMeta').textContent = (file.size/1024).toFixed(1)+' KB · '+count(parsed.noteCount)+' notes · '+time(parsed.duration);
+      $('outputName').value = file.name.replace(/\.midi?$/i,'')+'.Build'; $('clear').disabled = false;
+      trackList(); refresh();
+    } catch (error) {
+      if (id!==loadId) return;
+      // Keep the previous valid file usable if choosing a replacement fails.
+      $('download').disabled = $('play').disabled = !build; status(error.message,true);
+    } finally { if (id===loadId) $('midiFile').value = ''; }
+  }
+  function wiring() {
+    if (!plan) return;
+    const start = page*100, end = Math.min(start+100,plan.events.length), fragment = document.createDocumentFragment();
+    for (const event of plan.events.slice(start,end)) {
+      const tr = document.createElement('tr');
+      for (const value of [String(event.index+1),event.time.toFixed(2)+'s',event.delays.map(n=>n.toFixed(2)).join(' + '),event.notes.map(n=>n.name+' / '+n.key).join(', ')]) {
+        const td = document.createElement('td'); td.textContent = value; tr.append(td);
+      }
+      fragment.append(tr);
+    }
+    $('wiringRows').replaceChildren(fragment); $('pageInfo').textContent = (start+1)+'–'+end+' / '+count(plan.events.length);
+    $('prev').disabled = page===0; $('next').disabled = end===plan.events.length;
+  }
+  function draw() {
+    if (!plan || $('rollView').hidden) return;
+    const canvas = $('roll'), rect = canvas.getBoundingClientRect(), ratio = Math.min(window.devicePixelRatio||1,2);
+    const w = Math.max(200,rect.width), h = rect.height, left = 39, top = 24, width = w-left-10, height = h-top-12;
+    if (canvas.width!==Math.round(w*ratio) || canvas.height!==Math.round(h*ratio)) { canvas.width = Math.round(w*ratio); canvas.height = Math.round(h*ratio); }
+    const theme = getComputedStyle(canvas);
+    const colors = Object.fromEntries(['paper','light','ink','muted','line','accent'].map(name => [name,theme.getPropertyValue('--'+name).trim()]));
+    const ctx = canvas.getContext('2d'); ctx.setTransform(ratio,0,0,ratio,0,0); ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = colors.light; ctx.fillRect(0,0,w,h);
+    const start = Math.floor(position/12)*12, span = 12, row = height/25;
+    ctx.font = '10px Consolas, monospace'; ctx.textBaseline = 'middle';
+    for (let key = 0; key < 25; key++) {
+      const y = top+(24-key)*row;
+      ctx.fillStyle = B.noteName(key+54).includes('#')?colors.light:colors.paper; ctx.fillRect(left,y,width,row);
+      if (key%3===0 || key===24) { ctx.fillStyle = colors.muted; ctx.fillText(B.noteName(key+54),3,y+row/2); }
+    }
+    for (let s = 0; s <= span; s++) {
+      const x = left+s/span*width;
+      ctx.strokeStyle = colors.line; ctx.globalAlpha = s%4===0?0.3:0.12; ctx.beginPath(); ctx.moveTo(x,top); ctx.lineTo(x,h-12); ctx.stroke(); ctx.globalAlpha = 1;
+      if (s%2===0) { ctx.fillStyle = colors.muted; ctx.fillText(time(start+s),x-10,10); }
+    }
+    // Binary search avoids walking long songs on each animation frame.
+    let lo = 0, hi = plan.events.length;
+    while (lo<hi) { const mid = (lo+hi)>>1; if (plan.events[mid].time<start-B.SUSTAIN) lo=mid+1; else hi=mid; }
+    for (let i = lo; i<plan.events.length; i++) {
+      const event = plan.events[i]; if (event.time>start+span) break;
+      for (const note of event.notes) {
+        const x = left+(event.time-start)/span*width, y = top+(24-note.key)*row+1;
+        const endX = Math.min(w-10,x+B.SUSTAIN/span*width), beginX = Math.max(left,x);
+        ctx.fillStyle = playing && position>=event.time && position<event.time+B.SUSTAIN ? colors.ink : colors.accent;
+        if (endX>beginX) ctx.fillRect(beginX,y,endX-beginX,Math.max(2,row-2));
+      }
+    }
+    const x = left+(position-start)/span*width;
+    ctx.strokeStyle = colors.accent; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x,top); ctx.lineTo(x,h-12); ctx.stroke();
+    $('rollRange').textContent = time(start)+' — '+time(start+span);
+  }
+  function clock() { if (!plan) return; $('clock').textContent = time(position)+' / '+time(plan.duration); $('seek').value = position; }
+  function noteSound(pitch,when) {
+    const gain = audio.createGain(), oscillator = audio.createOscillator();
+    // A quiet harmonic tone is an approximation, not the game's SoundFont.
+    oscillator.type = 'triangle'; oscillator.frequency.value = 440*2**((pitch-69)/12);
+    gain.gain.setValueAtTime(0,when); gain.gain.linearRampToValueAtTime(0.09,when+0.008); gain.gain.exponentialRampToValueAtTime(0.001,when+B.SUSTAIN);
+    oscillator.connect(gain); gain.connect(audio.destination); voices.add(oscillator);
+    oscillator.onended = ()=> { voices.delete(oscillator); oscillator.disconnect(); gain.disconnect(); };
+    oscillator.start(when); oscillator.stop(when+B.SUSTAIN);
+  }
+  function schedule() {
+    if (!playing || !plan) return;
+    const now = audio.currentTime-startClock;
+    while (nextEvent<plan.events.length && plan.events[nextEvent].time<now+0.2) {
+      const event = plan.events[nextEvent++];
+      if (event.time>=now-0.1) for (const note of event.notes) noteSound(note.midi,Math.max(audio.currentTime+0.005,startClock+event.time));
+    }
+  }
+  function animate() {
+    if (!playing || !plan) return;
+    position = Math.min(plan.duration,Math.max(0,audio.currentTime-startClock)); clock(); draw();
+    if (position>=plan.duration) { stop(false); return; }
+    frame = requestAnimationFrame(animate);
+  }
+  async function play() {
+    if (!plan) return;
+    if (playing) { stop(false); return; }
+    const currentPlan = plan;
+    try {
+      audio ||= new (window.AudioContext||window.webkitAudioContext)(); await audio.resume();
+      if (plan!==currentPlan) return;
+      if (position>=plan.duration-0.01) position=0;
+      startClock = audio.currentTime-position+0.04; nextEvent=plan.events.findIndex(e=>e.time>=position-0.001); if(nextEvent<0) nextEvent=plan.events.length;
+      playing=true; $('play').textContent='Ⅱ Pause'; $('stop').disabled=false;
+      schedule(); timer=setInterval(schedule,40); animate();
+    } catch (error) { stop(false); status('Audio preview could not start: '+error.message,true); }
+  }
+  function stop(reset = true) {
+    playing=false; clearInterval(timer); cancelAnimationFrame(frame); timer=null; frame=null;
+    for (const voice of voices) { try { voice.stop(); } catch {} } voices.clear();
+    $('play').textContent='▶ Preview'; $('stop').disabled=true;
+    if (reset) position=0; if(plan) { clock(); draw(); }
+  }
+  function download() {
+    if (!build) return;
+    let name = $('outputName').value.trim().replace(/[<>:"/\\|?*\x00-\x1f]/g,'_').replace(/[. ]+$/g,'');
+    if (!name) name='song'; name=name.replace(/\.build$/i,'')+'.Build'; $('outputName').value=name;
+    const url = URL.createObjectURL(new Blob([JSON.stringify(build)],{type:'application/json'}));
+    const link = document.createElement('a'); link.href=url; link.download=name; document.body.append(link); link.click(); link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000); status('Downloaded '+name+' · '+count(plan.blockCount)+' blocks.');
+  }
+  function demoBytes() {
+    const data = [], add = (...n)=>data.push(...n), vlq = value=> { const out=[value&127]; while((value>>=7)>0) out.unshift((value&127)|128); return out; };
+    add(0,255,81,3,7,161,32);
+    for (const pitch of [54,56,58,59,61,63,65,66,65,63,61,59,58,56,54]) { add(0,144,pitch,90); add(...vlq(240),128,pitch,0); }
+    add(0,255,47,0);
+    const n=data.length;
+    return new Uint8Array([77,84,104,100,0,0,0,6,0,0,0,1,1,224,77,84,114,107,n>>>24,(n>>>16)&255,(n>>>8)&255,n&255,...data]);
+  }
+  $('midiFile').addEventListener('change',e=>loadFile(e.target.files[0]));
+  $('demo').addEventListener('click',()=>loadFile(new File([demoBytes()],'Scale test.mid',{type:'audio/midi'})));
+  $('clear').addEventListener('click',()=> {
+    ++loadId; stop(); midi=plan=build=null; fileLabel=''; $('midiFile').value=''; $('fileName').textContent='No file selected'; $('fileMeta').textContent='25 MB max · processed locally'; $('tracks').textContent='Load a MIDI to choose tracks.';
+    $('download').disabled=$('play').disabled=$('clear').disabled=$('allTracks').disabled=$('noTracks').disabled=true;
+    for(const id of ['statNotes','statDelays','statTotal','statTime']) $(id).textContent='—';
+    $('notice').hidden=true; $('exportMeta').textContent='1 Button + Delays + Music Notes'; $('outputName').value='song.Build';
+    $('empty').querySelector('strong').textContent='Ready when you are.'; $('empty').querySelector('p').textContent='Choose a MIDI or load the test tune.';
+    showTab(); status('Files stay in this browser.');
+  });
+  for (const id of settingsIds) $(id).addEventListener('change',refresh);
+  for (const [id,checked] of [['allTracks',true],['noTracks',false]]) $(id).addEventListener('click',()=> { for(const el of $('tracks').querySelectorAll('input:not(:disabled)')) el.checked=checked; refresh(); });
+  for (const [id,name] of [['rollTab','roll'],['wiringTab','wiring']]) $(id).addEventListener('click',()=>{tab=name;showTab();});
+  $('prev').addEventListener('click',()=>{if(page>0){page--;wiring();}}); $('next').addEventListener('click',()=>{if(plan && (page+1)*100<plan.events.length){page++;wiring();}});
+  $('play').addEventListener('click',play); $('stop').addEventListener('click',()=>stop()); $('download').addEventListener('click',download);
+  $('seek').addEventListener('input',()=>{const selected=Number($('seek').value);stop(false);position=selected;clock();draw();});
+  for(const type of ['dragover','dragenter']) $('drop').addEventListener(type,e=>{e.preventDefault();$('drop').classList.add('drag');});
+  for(const type of ['dragleave','drop']) $('drop').addEventListener(type,e=>{e.preventDefault();$('drop').classList.remove('drag');if(type==='drop')loadFile(e.dataTransfer.files[0]);});
+  // Prevent the browser navigating away when a file is dropped outside the field.
+  window.addEventListener('dragover',e=>e.preventDefault()); window.addEventListener('drop',e=>e.preventDefault());
+  window.addEventListener('resize',draw); window.addEventListener('pagehide',()=>stop(false));
+})();
+</script>
+</body>
+</html>
