@@ -8,6 +8,7 @@
 <style>
 :root{color-scheme:light;--paper:#353534;--ink:#dee8e4;--muted:#eae0e0;--line:#c7cbc1;--accent:#209fb9;--light:#2b2b29;--mono:Consolas,'Courier New',monospace}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 Arial,Helvetica,sans-serif}button,input,select{font:inherit;color:inherit;border-radius:0}button{cursor:pointer;border:1px solid var(--ink);background:var(--light);padding:9px 14px;min-height:39px}button:hover:enabled{background:#e5e6dc}button:disabled{cursor:default;opacity:.4}button.primary{background:var(--ink);color:white;border-color:var(--ink)}button.primary:hover:enabled{background:#414b44}button.text{border:0;background:none;padding:0;text-decoration:underline;min-height:30px;font-size:13px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}a{color:inherit}input[type=number],input[type=text],select{background:var(--light);border:1px solid #91978d;padding:7px 9px;width:100%;height:37px}input[type=checkbox]{accent-color:var(--ink);width:16px;height:16px;flex-shrink:0;margin:2px 0}input[type=range]{accent-color:var(--accent);width:100%}.shell{max-width:1280px;margin:0 auto;padding:0 34px}header{display:flex;justify-content:space-between;align-items:center;padding:23px 0;border-bottom:2px solid var(--ink)}.brand{font:bold 18px var(--mono);letter-spacing:-1px}.brand b{color:var(--accent)}.stamp,.eyebrow,.section-title{font:12px var(--mono);letter-spacing:1px;text-transform:uppercase}.stamp{color:var(--muted)}.intro{display:flex;justify-content:space-between;align-items:end;gap:20px;padding:31px 0 26px}h1{font-size:38px;font-weight:500;letter-spacing:-1.5px;line-height:1.1;margin:6px 0 0}h2{font-size:19px;line-height:1.3;margin:0;font-weight:500}.eyebrow{color:var(--accent)}.intro p{margin:0;color:var(--muted);font-size:13px}.workspace{border:1px solid var(--ink);display:grid;grid-template-columns:306px minmax(0,1fr);background:var(--light)}aside{border-right:1px solid var(--ink)}.section{padding:21px 22px;border-bottom:1px solid var(--line)}.section:last-child{border-bottom:0}.section-title{display:block;margin-bottom:15px;color:var(--muted)}.drop{position:relative;display:block;border:1px dashed var(--accent);padding:23px 12px;text-align:center;cursor:pointer;background:var(--paper)}.drop:hover,.drop.drag{background:var(--light);border-color:var(--accent)}.drop:focus-within{outline:2px solid var(--accent)}.drop strong{font-weight:500;display:block;font-size:15px;color:var(--accent)}.drop small{display:block;color:var(--muted);margin-top:5px;font:12px var(--mono)}.drop input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.file-name{font:13px var(--mono);overflow-wrap:anywhere;margin:14px 0 3px}.file-meta{font-size:12px;color:var(--muted);margin:0}.file-actions{display:flex;gap:18px;justify-content:space-between;margin-top:9px}.field{display:block;margin-bottom:14px}.field>span{display:block;font-size:13px;margin-bottom:5px}.field:last-child{margin-bottom:0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.check{display:flex;align-items:start;gap:9px;margin:13px 0;font-size:13px}.check small{display:block;color:var(--muted);font-size:11px;margin-top:2px}details summary{cursor:pointer;font-size:13px}details .advanced{padding-top:14px}.tracks{max-height:195px;overflow:auto;margin:11px 0 0}.track{display:flex;gap:9px;padding:7px 0;border-top:1px solid #e4e5dc;font-size:12px}.track .track-label{flex:1;min-width:0;overflow-wrap:anywhere}.track em{font:11px var(--mono);color:var(--muted);font-style:normal;white-space:nowrap}.track-actions{display:flex;gap:14px}.main{min-width:0;display:flex;flex-direction:column}.readout{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink)}.stat{padding:21px 18px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat span{display:block;font:11px var(--mono);text-transform:uppercase;color:var(--muted);letter-spacing:.3px}.stat strong{display:block;font:29px var(--mono);margin-top:5px;font-weight:400}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:13px 18px}.tabs{display:flex;gap:20px}.tabs button{border:0;border-bottom:2px solid transparent;padding:8px 0;background:none;font:12px var(--mono)}.tabs button[aria-selected=true]{border-color:var(--accent);color:var(--accent)}.transport{display:flex;gap:8px;align-items:center}.transport button{padding:6px 12px;min-height:34px;font-size:12px}.empty{display:grid;place-content:center;text-align:center;min-height:340px;padding:30px;color:var(--muted)}.empty .symbol{font:65px var(--mono);color:#bec3b6;margin-bottom:15px}.empty strong{font-size:17px;color:var(--ink);font-weight:400}.empty p{font-size:13px;margin:7px 0}.view{padding:19px 18px 12px}.roll-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;font:11px var(--mono);color:var(--muted)}canvas{display:block;width:100%;height:286px;background:var(--light);border:1px solid var(--line)}.scrub{display:flex;gap:15px;align-items:center;margin-top:11px;font:12px var(--mono)}.scrub output{min-width:105px}.hint{font-size:11px;color:var(--muted);margin:9px 0 0}.notice{margin:0 18px 18px;border-left:3px solid var(--accent);padding:10px 12px;background:#f5eee2;color:#774725;font-size:12px}.wiring{overflow:auto;height:318px}table{border-collapse:collapse;width:100%;font:12px var(--mono);text-align:left;white-space:nowrap}td,th{border-bottom:1px solid var(--line);padding:10px}th{font-size:10px;font-weight:400;color:var(--muted);position:sticky;top:0;background:var(--light)}td:last-child{white-space:normal;min-width:120px}.pagination{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font:11px var(--mono)}.pagination button{font-size:11px;min-height:29px;padding:4px 10px}.export{margin-top:auto;border-top:1px solid var(--ink);padding:20px 22px}.export-fields{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}.export .field{margin:0}.export .primary{height:37px;min-height:37px;padding:7px 16px;font:13px var(--mono)}.export-meta{display:flex;justify-content:space-between;gap:10px;font:11px var(--mono);color:var(--muted);margin-top:12px}.status{min-height:25px;font:12px var(--mono);padding:15px 0 5px;color:var(--muted)}.status.error{color:var(--accent)}footer{display:flex;justify-content:space-between;gap:20px;padding:16px 0 25px;color:var(--muted);font-size:11px}footer details{max-width:550px}footer details p{margin:8px 0 0;font-size:12px}footer summary{font-size:11px}[hidden]{display:none!important}@media(max-width:900px){.shell{padding:0 18px}.workspace{grid-template-columns:260px minmax(0,1fr)}.stat{padding:17px 11px}.stat strong{font-size:24px}.toolbar{flex-wrap:wrap}.intro p{display:none}.section{padding:18px 16px}.export-fields{grid-template-columns:1fr}.export .primary{width:100%}}@media(max-width:650px){.shell{padding:0 12px}header{padding:18px 0}.stamp{font-size:10px;letter-spacing:0}h1{font-size:31px}.intro{padding:22px 0}.workspace{display:flex;flex-direction:column}aside{border-right:0;border-bottom:1px solid var(--ink)}.settings{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.settings .section-title,.settings details{grid-column:1/-1}.settings .check{margin:4px 0 12px}.readout .stat{padding:17px 9px}.stat strong{font-size:24px}.stat span{font-size:9px}.export-fields{grid-template-columns:1fr}.empty{min-height:230px}.toolbar{gap:8px}.tabs{gap:15px}footer{flex-direction:column;gap:10px}canvas{height:260px}}
+.pitch-guide{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.pitch-guide h3{font-size:14px;font-weight:500;margin:0}.pitch-guide p{font-size:12px;color:var(--muted);margin:7px 0}.pitch-strip{max-height:320px;overflow:auto;padding:6px 0}.pitch-line{display:grid;grid-template-columns:repeat(var(--slot-count),minmax(28px,1fr));min-width:calc(var(--slot-count)*28px);direction:ltr}.pitch-slot{height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:bold 13px var(--mono)}.pitch-slot svg{width:28px;height:39px;display:block}.pitch-row-label{font:11px var(--mono);color:var(--muted);margin-top:9px}
 </style>
 </head>
 <body>
@@ -26,7 +27,7 @@
 <label class="check"><input id="merge" type="checkbox" checked><span>Merge nearby starts<small>Within 0.025 sec</small></span></label>
 <details><summary>Block saving &amp; layout</summary><div class="advanced">
 <label class="check"><input id="saveDelays" type="checkbox"><span>Save Delay blocks<small>Group starts within 0.075 sec</small></span></label>
-<label class="check"><input id="reuseNotes" type="checkbox"><span>Reuse matching note blocks<small>One block per pitch</small></span></label>
+<label class="check"><input id="reuseNotes" type="checkbox" checked><span>Save note blocks<small>Reuse one block per pitch</small></span></label>
 <div class="pair"><label class="field"><span>Columns</span><input id="columns" type="number" value="24" min="4" max="32" step="1"></label><label class="field"><span>Spacing, studs</span><input id="spacing" type="number" value="3" min="3" max="10" step="0.5"></label></div>
 </div></details>
 </section>
@@ -39,15 +40,15 @@
 <div id="rollView" class="view" role="tabpanel" aria-labelledby="rollTab" hidden><div class="roll-heading"><span>F#3 — F#5 / 25 keys</span><span id="rollRange">0:00 — 0:12</span></div><canvas id="roll" aria-label="Converted note timeline"></canvas><div class="scrub"><output id="clock">0:00 / 0:00</output><input type="range" id="seek" min="0" max="1" step="0.01" value="0" aria-label="Preview position"></div><p class="hint">Synth preview · fixed 0.85 sec note sound · timing follows the exported build</p></div>
 <div id="wiringView" class="view" role="tabpanel" aria-labelledby="wiringTab" hidden><div class="wiring"><table><thead><tr><th>STEP</th><th>PLAY AT</th><th>WAIT, SEC</th><th>NOTES / KEY</th></tr></thead><tbody id="wiringRows"></tbody></table></div><div class="pagination"><button id="prev">← Previous</button><span id="pageInfo"></span><button id="next">Next →</button></div><p class="hint">Button → Delay chain → Note blocks. Each chord shares a Delay output.</p></div>
 <p id="notice" class="notice" hidden></p>
-<section class="export"><div class="export-fields"><label class="field"><span>Build filename</span><input type="text" id="outputName" value="song.Build" maxlength="120" aria-label="Build filename"></label><button id="download" class="primary" disabled>Download .Build ↓</button></div><div class="export-meta"><span id="exportMeta">1 Button + Delays + Music Notes</span><span>Import into your favorite script (I reccomend Butter)</span></div></section>
+<section class="export"><label class="field" style="margin-bottom:14px"><span>File format</span><select id="outputFormat" aria-label="File format"><option value="butter">Butter (song can stop because of bad bind handling in the script)</option><option value="asu">luau.pro (Asu) (you have to manually set the notes' key)</option></select></label><div class="export-fields"><label class="field"><span>Build filename</span><input type="text" id="outputName" value="song.Build" maxlength="120" aria-label="Build filename"></label><button id="download" class="primary" disabled>Download .Build ↓</button></div>
+<section id="pitchGuide" class="pitch-guide" aria-labelledby="pitchGuideTitle" hidden><h3 id="pitchGuideTitle">Asu note pitches</h3><p id="pitchGuideHint"></p><div id="pitchGuideLines" class="pitch-strip"></div></section>
+<div class="export-meta"><span id="exportMeta">1 Button + Delays + Music Notes</span><span id="formatName">Butter</span></div></section>
 </div>
 </main>
 <div id="status" class="status" role="status" aria-live="polite">Files stay in this browser.</div>
 <footer><span>Credits for conversion logic: <a href="https://babft-music-note.vercel.app/" target="_blank" rel="noopener">BABFT Music Notes</a></span></footer>
 </div>
-<script>/* Pitch folding and delay planning adapted from babft-music-note.vercel.app,
-   used with the author's permission supplied by the user. Build v1 serialization
-   is based on the user's wired Button -> Delay -> Note test file. */
+<script>
 (function (root) {
   'use strict';
   const MIN = 54, MAX = 78, SUSTAIN = 0.85, LIMIT = 40000;
@@ -165,7 +166,7 @@
     return parts;
   }
   function makePlan(midi, settings = {}) {
-    const o = { speed:100, startDelay:0.5, transpose:0, merge:true, saveDelays:false, reuseNotes:false, ...settings };
+    const o = { speed:100, startDelay:0.5, transpose:0, merge:true, saveDelays:false, reuseNotes:true, ...settings };
     if (!Number.isFinite(o.speed) || o.speed < 10 || o.speed > 400) throw Error('Speed must be between 10 and 400%.');
     if (!Number.isFinite(o.startDelay) || o.startDelay < 0 || o.startDelay > 60) throw Error('Start delay must be between 0 and 60 seconds.');
     if (!Number.isInteger(o.transpose) || o.transpose < -48 || o.transpose > 48) throw Error('Transpose must be a whole number from -48 to 48.');
@@ -240,6 +241,30 @@
     validateBuild(result);
     return result;
   }
+  function checkDelayChain(build, { repair = false, expectedCount } = {}) {
+    const buttons = build?.Data?.Button, delays = build?.Data?.Delay;
+    if (!Array.isArray(buttons) || buttons.length !== 1 || !Array.isArray(delays) || !delays.length) throw Error('The song needs one Button and a Delay chain.');
+    if (expectedCount !== undefined && delays.length !== expectedCount) throw Error('Delay blocks are missing or unexpected. Reconvert the MIDI before saving.');
+    const ids = new Set();
+    for (const block of [buttons[0], ...delays]) {
+      if (!Number.isInteger(block?.ID) || ids.has(block.ID)) throw Error('Duplicate or invalid Button/Delay ID. Reconvert the MIDI before saving.');
+      ids.add(block.ID);
+    }
+    // Delay array order is the playback order established by exportBuild.
+    // Note IDs are interleaved, so the previous Delay is not always ID - 1.
+    const breaks = [];
+    let previous = buttons[0].ID;
+    for (const delay of delays) {
+      const input = delay.Binds;
+      if (!Array.isArray(input) || input.length !== 1 || !Array.isArray(input[0]) || input[0].length !== 3 || input[0][0] !== previous || input[0][1] !== 'BindFire' || input[0][2] !== -1) {
+        breaks.push({ delay, source: previous });
+      }
+      previous = delay.ID;
+    }
+    if (breaks.length && !repair) throw Error('Delay '+breaks[0].delay.ID+' is not connected correctly to '+breaks[0].source+'.');
+    for (const { delay, source } of breaks) delay.Binds = [[source, 'BindFire', -1]];
+    return { checked: delays.length, repaired: breaks.length };
+  }
   function validateBuild(build) {
     if (build.AutoBuild_Version !== 'v1' || !build.Data) throw Error('Expected a Build v1 file.');
     const all = Object.entries(build.Data).flatMap(([type,a])=>a.map(b=>({type,...b}))), ids = new Map();
@@ -253,9 +278,121 @@
     for (const b of all) for (const [source,action,key] of b.Binds || []) {
       if (!ids.has(source) || source === b.ID || !['Button','Delay'].includes(ids.get(source).type) || action !== 'BindFire' || key !== -1) throw Error('Invalid block binding.');
     }
+    checkDelayChain(build);
+    // Every Delay is now reachable from the Button; require each Note to
+    // receive at least one of those Delay outputs as well.
+    for (const note of build.Data.Note || []) {
+      if (!Array.isArray(note.Binds) || !note.Binds.length || note.Binds.some(([source]) => ids.get(source)?.type !== 'Delay')) throw Error('Music Note '+note.ID+' is not connected to the Delay chain.');
+    }
     return { blocks:all.length, ids };
   }
-  const api = { parseMidi,makePlan,exportBuild,validateBuild,splitDelay,fold,noteName,SUSTAIN };
+  function toAsuBuild(build) {
+    validateBuild(build);
+    const data = { Button:[], Note:[], Delay:[] }, ids = new Map();
+    const colors = { Button:[0.106,0.165,0.208], Note:[0.655,0.369,0.608], Delay:[0.639,0.635,0.647] };
+    for (const type of Object.keys(data)) {
+      for (const block of build.Data[type]) {
+        const output = {
+          ShowShadow:block.CastShadow, CanCollide:block.CanCollide, Color:[...colors[type]],
+          Anchored:block.Anchored, BoolValues:[], Rotation:type==='Button'?[-90,90,0]:[0,0,0],
+          Transparency:block.Transparency, Position:block.CFrame.slice(0,3), ID:block.ID
+        };
+        if (type !== 'Note') { output.BindTable = []; output.Legacy = false; }
+        output.NumberValues = { Density:type==='Delay'?0.35:0.7 };
+        if (type === 'Delay') output.NumberValues.WaitDuration = block.MValues.WaitDuration;
+        if (type === 'Note') output.NumberValues.SemitoneOffset = block.MValues.Key;
+        data[type].push(output); ids.set(output.ID,output);
+      }
+    }
+    // Butter targets list their sources; Asu sources list their targets.
+    // Put chain outputs before note outputs, as in the supplied Asu file.
+    for (const target of [...build.Data.Delay,...build.Data.Note]) {
+      for (const [source,action,key] of target.Binds) ids.get(source).BindTable.push([target.ID,action,key]);
+    }
+    validateAsuBuild(data);
+    return data;
+  }
+  function validateAsuBuild(data) {
+    if (!data || !Array.isArray(data.Button) || data.Button.length !== 1 || !Array.isArray(data.Delay) || !data.Delay.length || !Array.isArray(data.Note)) throw Error('Invalid luau.pro (Asu) build.');
+    const ids = new Map(), incoming = new Map();
+    for (const type of ['Button','Note','Delay']) for (const block of data[type]) {
+      if (!Number.isInteger(block.ID) || ids.has(block.ID)) throw Error('Duplicate or invalid Asu block ID.');
+      if (!Array.isArray(block.Position) || block.Position.length !== 3 || !block.Position.every(Number.isFinite) || !Array.isArray(block.Rotation) || block.Rotation.length !== 3 || !block.Rotation.every(Number.isFinite)) throw Error('Invalid Asu block transform.');
+      if (type === 'Delay' && !(block.NumberValues?.WaitDuration >= 0.05 && block.NumberValues.WaitDuration <= 10)) throw Error('Invalid Asu Delay duration.');
+      if (type === 'Note' && (!Number.isInteger(block.NumberValues?.SemitoneOffset) || block.NumberValues.SemitoneOffset < 0 || block.NumberValues.SemitoneOffset > 24)) throw Error('Invalid Asu note key.');
+      ids.set(block.ID,{ type, block }); incoming.set(block.ID,[]);
+    }
+    for (const [source,{type,block}] of ids) {
+      const seen = new Set();
+      for (const bind of block.BindTable || []) {
+        if (!Array.isArray(bind) || bind.length !== 3) throw Error('Invalid Asu binding.');
+        const [target,action,key] = bind;
+        if (type === 'Note' || !ids.has(target) || target === source || ids.get(target).type === 'Button' || action !== 'BindFire' || key !== -1 || seen.has(target)) throw Error('Invalid Asu binding.');
+        seen.add(target); incoming.get(target).push(source);
+      }
+    }
+    let previous = data.Button[0].ID;
+    for (const delay of data.Delay) {
+      const sources = incoming.get(delay.ID);
+      if (sources.length !== 1 || sources[0] !== previous) throw Error('Asu Delay '+delay.ID+' is not connected to the song chain.');
+      previous = delay.ID;
+    }
+    for (const note of data.Note) {
+      const sources = incoming.get(note.ID);
+      if (!sources.length || sources.some(id=>ids.get(id).type !== 'Delay')) throw Error('Asu Music Note '+note.ID+' is not connected to the Delay chain.');
+    }
+    return { blocks:ids.size, ids };
+  }
+  function serializeBuild(build, format = 'butter') {
+    if (format === 'butter') { validateBuild(build); return { text:JSON.stringify(build), mime:'application/json' }; }
+    if (format !== 'asu') throw Error('Unknown file format. Choose Butter or luau.pro (Asu).');
+    const data = toAsuBuild(build), blocks = {};
+    let total = 0;
+    for (const [type,items] of Object.entries(data)) { blocks[type] = { Count:items.length, Need:items.length }; total += items.length; }
+    const list = { Total:total, Need:total, Blocks:blocks };
+    const meta = 'LP_META\n\nluau.pro (Asu)\n\nGame: Build A Boat For Treasure\nFormat Version: 1\nCodec Version: 2.0';
+    return { text:meta+'\n\nLP_LIST\n'+JSON.stringify(list)+'\n\nLP_BUILD\n'+JSON.stringify(data)+'\n', mime:'text/plain' };
+  }
+  function getPitchGuide(build) {
+    validateBuild(build);
+    return build.Data.Note.map(block=>({
+      id:block.ID, pitch:noteName(MIN+block.MValues.Key), key:block.MValues.Key,
+      position:block.CFrame.slice(0,3)
+    })).sort((a,b)=>a.key-b.key || a.id-b.id);
+  }
+  // Note pallete
+  const NOTE_COLORS = ['#bf65bd','#c066aa','#c66798','#c86c80','#c67d72','#c98e68','#c6a165','#c9b767','#bfd071','#abc96e','#90c375','#77c377','#6ec382','#69bd9f','#64b8ad','#63b3ba','#64a9c1','#669cc3','#6c87c0','#7a79c5','#8c70c0','#a067ba','#b263b8','#ba61b9','#c45bb4'];
+  function getNoteGuideLines(build, { reuseNotes = true, columns = 24, spacing = 3 } = {}) {
+    const notes = getPitchGuide(build).map(note=>({ ...note, label:note.pitch.replace(/\d+$/,''), color:NOTE_COLORS[note.key] }));
+    if (reuseNotes) {
+      const slots = Array(25).fill(null);
+      for (const note of notes) {
+        if (slots[note.key]) throw Error('Multiple blocks occupy the same saved-note position.');
+        slots[note.key] = note;
+      }
+      return [{ slots }];
+    }
+    // Without note reuse, mirror the actual rows beside the Delay grid.
+    // Chords, split waits and row boundaries can all leave empty positions.
+    if (!Number.isInteger(columns) || columns < 4 || columns > 32 || !Number.isFinite(spacing) || spacing < 3 || spacing > 10) throw Error('Invalid note guide layout.');
+    const rows = new Map();
+    for (const note of notes) {
+      const [x,y,z] = note.position, id = JSON.stringify([x,y]);
+      const column = Math.round((z+80)/spacing);
+      if (column < 0 || column >= columns || Math.abs(z-(-80+column*spacing)) > 0.00001) throw Error('Note does not match the build layout.');
+      if (!rows.has(id)) rows.set(id,{ x,y,slots:Array(columns).fill(null) });
+      const row = rows.get(id);
+      if (row.slots[column]) throw Error('Multiple notes occupy the same guide position.');
+      row.slots[column] = note;
+    }
+    return [...rows.values()].sort((a,b)=>a.y-b.y || a.x-b.x);
+  }
+  function prepareBuildForSave(build, expectedDelayCount, format = 'butter') {
+    const result = checkDelayChain(build, { repair:true, expectedCount:expectedDelayCount });
+    const serialized = serializeBuild(build,format);
+    return { ...result, ...serialized, ...(format==='butter'?{json:serialized.text}:{}) };
+  }
+  const api = { parseMidi,makePlan,exportBuild,validateBuild,checkDelayChain,prepareBuildForSave,toAsuBuild,validateAsuBuild,serializeBuild,getPitchGuide,getNoteGuideLines,splitDelay,fold,noteName,SUSTAIN };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.BoatMidi = api;
 })(typeof globalThis === 'undefined' ? window : globalThis);
@@ -268,6 +405,45 @@
   const voices = new Set(), settingsIds = ['startDelay','speed','transpose','merge','saveDelays','reuseNotes','columns','spacing'];
   const time = n => Math.floor(Math.max(0,n)/60)+':'+Math.floor(Math.max(0,n)%60).toString().padStart(2,'0');
   const count = n => n.toLocaleString();
+  const formatLabel = () => $('outputFormat').value === 'asu' ? 'luau.pro (Asu)' : 'Butter';
+  function renderPitchGuide() {
+    const visible = $('outputFormat').value === 'asu' && !!build && !!plan;
+    $('pitchGuide').hidden = !visible;
+    if (!visible) { $('pitchGuideLines').replaceChildren(); return; }
+    $('pitchGuideHint').textContent = plan.settings.reuseNotes
+      ? 'F#3 → F#5 · same order as the placed note bank. Blanks are unused positions.'
+      : 'Rows match the placed blocks beside the Delays. Blanks are empty positions.';
+    const fragment = document.createDocumentFragment();
+    const lines = B.getNoteGuideLines(build,{ reuseNotes:plan.settings.reuseNotes,columns:Number($('columns').value),spacing:Number($('spacing').value) });
+    for (const [rowIndex,line] of lines.entries()) {
+      const row = document.createElement('div'); row.className = 'pitch-line';
+      row.style.setProperty('--slot-count',String(line.slots.length));
+      row.setAttribute('role','list'); row.setAttribute('aria-label','Note row '+(rowIndex+1));
+      if (lines.length > 1) { const label = document.createElement('div'); label.className = 'pitch-row-label'; label.textContent = 'Row '+(rowIndex+1); fragment.append(label); }
+      for (const [index,note] of line.slots.entries()) {
+        const slot = document.createElement('div'); slot.className = 'pitch-slot'+(note?'':' empty'); slot.setAttribute('role','listitem');
+        slot.setAttribute('aria-label',note?note.pitch:'Empty position '+(index+1));
+        if (note) {
+          slot.style.color = note.color; slot.title = note.pitch;
+          const icon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+          icon.setAttribute('viewBox','0 0 40 52'); icon.setAttribute('aria-hidden','true');
+          icon.innerHTML = '<path fill="currentColor" d="M19 39V4h4v3c2 3 12 5 12 14 0 5-2 9-6 12 4-9 1-15-6-17v23z"/><ellipse fill="currentColor" cx="12" cy="39" rx="10" ry="7" transform="rotate(-15 12 39)"/>';
+          const key = document.createElement('span'); key.textContent = note.label;
+          slot.append(icon,key);
+        }
+        row.append(slot);
+      }
+      fragment.append(row);
+    }
+    $('pitchGuideLines').replaceChildren(fragment);
+  }
+  function updateExportMeta() {
+    $('formatName').textContent = formatLabel();
+    renderPitchGuide();
+    if (!build || !plan) return;
+    const serialized = B.serializeBuild(build,$('outputFormat').value);
+    $('exportMeta').textContent = count(plan.activations)+' note activations · '+(new Blob([serialized.text]).size/1024).toFixed(1)+' KB';
+  }
   function status(message, error = false) { $('status').textContent = message; $('status').classList.toggle('error',error); $('status').setAttribute('role',error?'alert':'status'); }
   function options() {
     return { startDelay:Number($('startDelay').value), speed:Number($('speed').value), transpose:Number($('transpose').value), merge:$('merge').checked, saveDelays:$('saveDelays').checked, reuseNotes:$('reuseNotes').checked, tracks:[...$('tracks').querySelectorAll('input:checked')].map(x=>Number(x.value)) };
@@ -283,7 +459,7 @@
       $('download').disabled = $('play').disabled = false;
       $('statNotes').textContent = count(plan.noteBlockCount); $('statDelays').textContent = count(plan.delayCount);
       $('statTotal').textContent = count(plan.blockCount); $('statTime').textContent = time(plan.duration);
-      $('exportMeta').textContent = count(plan.activations)+' note activations · '+(JSON.stringify(build).length/1024).toFixed(1)+' KB';
+      updateExportMeta();
       $('seek').max = plan.duration; $('seek').value = 0; position = 0; page = 0;
       const messages = [];
       if (plan.folded) messages.push(count(plan.folded)+' notes shifted by octaves.');
@@ -294,7 +470,7 @@
       $('notice').textContent = messages.join(' '); $('notice').hidden = !messages.length;
       showTab(); wiring(); draw(); clock(); status('Ready to export · '+count(plan.blockCount)+' blocks.');
     } catch (error) {
-      plan = null; build = null; $('notice').hidden = true;
+      plan = null; build = null; $('notice').hidden = true; renderPitchGuide();
       for (const id of ['statNotes','statDelays','statTotal','statTime']) $(id).textContent = '—';
       $('rollView').hidden = $('wiringView').hidden = true; $('empty').hidden = false;
       $('empty').querySelector('strong').textContent = 'Check your selection.';
@@ -433,12 +609,19 @@
     if (reset) position=0; if(plan) { clock(); draw(); }
   }
   function download() {
-    if (!build) return;
-    let name = $('outputName').value.trim().replace(/[<>:"/\\|?*\x00-\x1f]/g,'_').replace(/[. ]+$/g,'');
-    if (!name) name='song'; name=name.replace(/\.build$/i,'')+'.Build'; $('outputName').value=name;
-    const url = URL.createObjectURL(new Blob([JSON.stringify(build)],{type:'application/json'}));
-    const link = document.createElement('a'); link.href=url; link.download=name; document.body.append(link); link.click(); link.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),30000); status('Downloaded '+name+' · '+count(plan.blockCount)+' blocks.');
+    if (!build || !plan) return;
+    try {
+      const checked = B.prepareBuildForSave(build,plan.delayCount,$('outputFormat').value);
+      let name = $('outputName').value.trim().replace(/[<>:"/\\|?*\x00-\x1f]/g,'_').replace(/[. ]+$/g,'');
+      if (!name) name='song'; name=name.replace(/\.build$/i,'')+'.Build'; $('outputName').value=name;
+      const url = URL.createObjectURL(new Blob([checked.text],{type:checked.mime}));
+      const link = document.createElement('a'); link.href=url; link.download=name; document.body.append(link); link.click(); link.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),30000);
+      const repaired = checked.repaired ? ' · '+count(checked.repaired)+' Delay connection'+(checked.repaired===1?'':'s')+' repaired' : '';
+      status('Downloaded '+name+' · '+formatLabel()+' · '+count(checked.checked)+' Delay connections checked'+repaired+'.');
+    } catch (error) {
+      status('Could not save: '+error.message,true);
+    }
   }
   function demoBytes() {
     const data = [], add = (...n)=>data.push(...n), vlq = value=> { const out=[value&127]; while((value>>=7)>0) out.unshift((value&127)|128); return out; };
@@ -451,14 +634,18 @@
   $('midiFile').addEventListener('change',e=>loadFile(e.target.files[0]));
   $('demo').addEventListener('click',()=>loadFile(new File([demoBytes()],'Scale test.mid',{type:'audio/midi'})));
   $('clear').addEventListener('click',()=> {
-    ++loadId; stop(); midi=plan=build=null; fileLabel=''; $('midiFile').value=''; $('fileName').textContent='No file selected'; $('fileMeta').textContent='25 MB max · processed locally'; $('tracks').textContent='Load a MIDI to choose tracks.';
+    ++loadId; stop(); midi=plan=build=null; fileLabel=''; renderPitchGuide(); $('midiFile').value=''; $('fileName').textContent='No file selected'; $('fileMeta').textContent='25 MB max · processed locally'; $('tracks').textContent='Load a MIDI to choose tracks.';
     $('download').disabled=$('play').disabled=$('clear').disabled=$('allTracks').disabled=$('noTracks').disabled=true;
     for(const id of ['statNotes','statDelays','statTotal','statTime']) $(id).textContent='—';
     $('notice').hidden=true; $('exportMeta').textContent='1 Button + Delays + Music Notes'; $('outputName').value='song.Build';
-    $('empty').querySelector('strong').textContent='Ready when you are.'; $('empty').querySelector('p').textContent='Choose a MIDI or load the test tune.';
+    $('empty').querySelector('strong').textContent='Ready.'; $('empty').querySelector('p').textContent='Choose a MIDI or load the test tune.';
     showTab(); status('Files stay in this browser.');
   });
   for (const id of settingsIds) $(id).addEventListener('change',refresh);
+  $('outputFormat').addEventListener('change',()=> {
+    try { updateExportMeta(); if (plan) status('Ready to export · '+formatLabel()+'.'); }
+    catch (error) { status(error.message,true); }
+  });
   for (const [id,checked] of [['allTracks',true],['noTracks',false]]) $(id).addEventListener('click',()=> { for(const el of $('tracks').querySelectorAll('input:not(:disabled)')) el.checked=checked; refresh(); });
   for (const [id,name] of [['rollTab','roll'],['wiringTab','wiring']]) $(id).addEventListener('click',()=>{tab=name;showTab();});
   $('prev').addEventListener('click',()=>{if(page>0){page--;wiring();}}); $('next').addEventListener('click',()=>{if(plan && (page+1)*100<plan.events.length){page++;wiring();}});
